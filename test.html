@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+	<title>MSU Major Movers</title>
+	<meta name=description content="Undergraduate Major Movers: NSSC First Declared Major vs. Degree Major">
+	<meta name=viewport content="width=device-width, initial-scale=1.0">
+	<!--[if lt IE 9]><script src=/dashboards/majors/html5shiv-printshiv.js></script><![endif]-->
+  <script src="./javascript.js"></script>
+  
+<style>
+@font-face {
+    font-family: "CartoGothic";
+    font-style: normal;
+    font-weight: normal;
+    src: url("./fonts/CartoGothicStd-Book-webfont.eot") format("embedded-opentype"), url("./fonts/CartoGothicStd-Book-webfont.woff") format("woff"), url("./fonts/CartoGothicStd-Book-webfont.ttf") format("truetype"), url("./fonts/CartoGothicStd-Book-webfont.svg") format("svg");
+}
+@font-face {
+    font-family: "CartoGothic";
+    font-style: normal;
+    font-weight: bold;
+    src: url("./fonts/CartoGothicStd-Bold-webfont.eot") format("embedded-opentype"), url("./fonts/CartoGothicStd-Bold-webfont.woff") format("woff"), url("./fonts/CartoGothicStd-Bold-webfont.ttf") format("truetype"), url("./fonts/CartoGothicStd-Bold-webfont.svg") format("svg");
+}
+
+body {
+  font: 15px/1.8em 'CartoGothic', Arial, sans-serif;
+  width: 100%;
+  margin: 0;
+  background-color: #bababa;
+  color: #000000;
+  line-height: 1.7em
+}
+
+img {
+  max-width: 100%;
+}
+
+.social-wrap {
+  position: relative;
+  margin: 0 0 auto auto;
+}
+
+.social {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #bababa;
+  padding: 20px;
+}
+
+.social div {
+  display: inline-block;
+}
+.fb-like {
+  top: -9px;
+  margin-right: 35px;
+}
+
+a, a:visited, a:hover, a:focus, a:link {
+  color: #6A93BF;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  margin: 0 auto;
+  min-width: 500px;
+  max-width: 980px;
+  background-color: #bababa;
+  -moz-box-shadow: 0 0 15px #000;
+  -webkit-box-shadow: 0 0 15px #000;
+  box-shadow: 0 0 15px #000;
+
+  overflow: hidden;
+
+  background-image: -webkit-linear-gradient(top, #F7F6F6 0px, #F7F6F6 300px, #FFFEFF 450px, #FFFEFF 1100px, #F7F6F6 1250px, #F7F6F6 100%);
+  background-image:    -moz-linear-gradient(top, #F7F6F6 0px, #F7F6F6 300px, #FFFEFF 450px, #FFFEFF 1100px, #F7F6F6 1250px, #F7F6F6 100%);
+  background-image:     -ms-linear-gradient(top, #F7F6F6 0px, #F7F6F6 300px, #FFFEFF 450px, #FFFEFF 1100px, #F7F6F6 1250px, #F7F6F6 100%);
+  background-image:      -o-linear-gradient(top, #F7F6F6 0px, #F7F6F6 300px, #FFFEFF 450px, #FFFEFF 1100px, #F7F6F6 1250px, #F7F6F6 100%);
+
+  background-image:   linear-gradient(to bottom, #F7F6F6 0px, #F7F6F6 300px, #FFFEFF 450px, #FFFEFF 1100px, #F7F6F6 1250px, #F7F6F6 100%);
+}
+
+header, footer {
+  margin: 0;
+}
+header {
+  padding: 10px 0px 0px 0px;
+}
+footer {
+  padding: 0 30px 0 30px;
+}
+
+h1 {
+  font-family: 'CartoGothic', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 2.3ex;
+  text-transform: uppercase;
+  margin: 0 0 35px 0;
+}
+
+.badge {
+  float: right;
+  margin: -14px 20px 20px 20px;
+}
+
+.lead-in {
+  font-size: 22px;
+  line-height: 1.3em;
+  font-weight: normal;
+  color: #6D6B6B;
+  width: 75%;
+  margin: 0 0 30px 0;
+  max-width: 32em;
+}
+
+.credits {
+  font-size: 13px;
+  line-height: 1.6em;
+  color: #6D6B6B;
+  margin: 0 0 40px 0;
+}
+
+hr {
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAIAAAAW4yFwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABNJREFUeNpiuHDhAsP///8BAgwAFKIFbjWCxU8AAAAASUVORK5CYII=) repeat-x top left;
+  height:2px;
+  border:none !important;
+}
+
+#timeline {
+  margin: 15px auto;
+  text-align: center;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+}
+main {
+  position: relative;
+}
+
+.year label {
+  font-size: 15px;
+  font-weight: normal;
+  border: 1px solid #CDCDCD;
+  color: #6D6B6B;
+  background-color: #D8D8D8;
+  padding: 8px 30px 5px 30px;
+  margin: 0 5px;
+  cursor: pointer;
+  background-image: -webkit-linear-gradient(top, #D8D8D8, #CDCDCD);
+  background-image:    -moz-linear-gradient(top, #D8D8D8, #CDCDCD);
+  background-image:     -ms-linear-gradient(top, #D8D8D8, #CDCDCD);
+  background-image:      -o-linear-gradient(top, #D8D8D8, #CDCDCD);
+  background-image:   linear-gradient(to bottom, #D8D8D8, #CDCDCD);
+  border-radius: 15px;
+}
+
+.year input {
+  display: none;
+}
+.year input[checked] + label {
+  color: #D9E3EF;
+  background-color: #6F99C6;
+  background-image: -webkit-linear-gradient(top, #6F99C6, #668DB7);
+  background-image:    -moz-linear-gradient(top, #6F99C6, #668DB7);
+  background-image:     -ms-linear-gradient(top, #6F99C6, #668DB7);
+  background-image:      -o-linear-gradient(top, #6F99C6, #668DB7);
+  background-image:   linear-gradient(to bottom, #6F99C6, #668DB7);
+  border: 1px solid #4686C4;
+}
+
+.year label:hover {
+  background-image: -webkit-linear-gradient(top, #CDCDCD, #D8D8D8);
+  background-image:    -moz-linear-gradient(top, #CDCDCD, #D8D8D8);
+  background-image:     -ms-linear-gradient(top, #CDCDCD, #D8D8D8);
+  background-image:      -o-linear-gradient(top, #CDCDCD, #D8D8D8);
+  background-image:   linear-gradient(to bottom, #CDCDCD, #D8D8D8);
+}
+
+.year input[checked] + label:hover {
+  color: #D9E3EF;
+  background-color: #6F99C6;
+  background-image: -webkit-linear-gradient(top, #6F99C6, #6F99C6);
+  background-image:    -moz-linear-gradient(top, #6F99C6, #6F99C6);
+  background-image:     -ms-linear-gradient(top, #6F99C6, #6F99C6);
+  background-image:      -o-linear-gradient(top, #6F99C6, #6F99C6);
+  background-image:   linear-gradient(to bottom, #6F99C6, #6F99C6);
+  border: 1px solid #4686C4;
+}
+
+
+#diagram {
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}
+
+.column-wrap-3 {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.column-wrap-3 .column {
+  float: left;
+  width: 32%;
+  padding-right: 1%;
+}
+
+.column-wrap-2 {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  background-color: #E8EFF7;
+  border: 1px solid #D9E3EF;
+}
+
+.column-wrap-2 .column {
+  float: left;
+  width: 48%;
+  padding-right: 1%;
+}
+
+.column-item {
+  padding: 35px;
+}
+
+.column .column-item p {
+  font-size: 15px;
+  line-height: 1.6em;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  float: left;
+}
+
+a.button {
+  display: inline-block;
+  text-align: center;
+  font-size: 13px;
+  font-weight: normal;
+  border: 1px solid #F7F6F6;
+  color: #6D6B6B;
+  background-color: ##CCD4DD;
+  padding: 3px 25px 1px 25px;
+  margin: 0 auto;
+  cursor: pointer;
+  background-image: -webkit-linear-gradient(top, #CCD4DD, #BCC3CC);
+  background-image:    -moz-linear-gradient(top, #CCD4DD, #BCC3CC);
+  background-image:     -ms-linear-gradient(top, #CCD4DD, #BCC3CC);
+  background-image:      -o-linear-gradient(top, #CCD4DD, #BCC3CC);
+  background-image:   linear-gradient(to bottom, #CCD4DD, #BCC3CC);
+  border-radius: 15px;
+}
+
+a.button:hover {
+  background-image: -webkit-linear-gradient(top, #BCC3CC, #CCD4DD);
+  background-image:    -moz-linear-gradient(top, #BCC3CC, #CCD4DD);
+  background-image:     -ms-linear-gradient(top, #BCC3CC, #CCD4DD);
+  background-image:      -o-linear-gradient(top, #BCC3CC, #CCD4DD);
+  background-image:   linear-gradient(to bottom, #BCC3CC, #CCD4DD);
+  text-decoration: none;
+}
+
+
+.column h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
+
+.column p {
+  font-size: 13px;
+  margin: 6px 0 10px 0;
+  line-height: 1.6em;
+  color: #6D6B6B;
+}
+
+.column h3 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.license {
+  color: #6D6B6B;
+  text-align: center;
+  font-size: 11px;
+  margin: 18px 0 30px 0;
+}
+
+.license a img {
+  opacity: 0.3;
+  vertical-align: middle;
+}
+
+.license a:hover img {
+  opacity: 1.0;
+}
+
+svg {
+  font-size: 12px;
+  max-width: 100%;
+  vector-effect: non-scaling-stroke;
+}
+.info, .label {
+  pointer-events: none;
+}
+.info text {
+  fill: white;
+}
+
+#circle circle {
+  fill: none;
+  pointer-events: all;
+}
+text {
+  cursor: default;
+  fill: #333;
+}
+.group-arc + text {
+  -webkit-transition: opacity 0.75;
+  -moz-transition: opacity 0.75;
+  -o-transition: opacity 0.75;
+  transition: opacity 0.75;
+ 
+}
+.group-arc.animate + text {
+  opacity: 0;
+
+}
+#circle path {
+  -webkit-transition: opacity 0.75;
+  -moz-transition: opacity 0.75;
+  -o-transition: opacity 0.75;
+  transition: opacity 0.75;
+}
+#circle:hover path.fade,
+#circle path.unselected {
+  opacity: 0.02;
+  pointer-events: none;
+}
+text.fade {
+  opacity: 0;
+}
+.group-arc {
+  cursor: pointer;
+}
+text.region {
+  font-family: 'CartoGothic', Arial, sans-serif;
+  font-size: 13px;
+  
+}
+.chord {
+  opacity: 0.75;
+}
+.chord:hover {
+  opacity: 1;
+}
+
+@media print {
+    * {
+        color:#000 !important;
+        box-shadow:none !important;
+        text-shadow:none !important;
+		background:transparent !important;
+    }
+	html { background-color:#bababa; }
+	/* Hide navigation */
+	nav { display:none; }
+
+	/* Show link destinations in brackets after the link text */
+	a[href]:after { content: " (" attr(href) ") "; }
+	a[href] {
+		font-weight:bold;
+		text-decoration:underline;
+		color:#06c;
+		border:none;
+	}
+	/* Don't show link destinations for JavaScript or internal links */ 
+	a[href^="javascript:"]:after, a[href^="#"]:after { content:""; }
+	
+	/* Show abbr title value in brackets after the text */
+	abbr[title]:after { content: " (" attr(title) ")"; }
+
+	figure { 
+		margin-bottom:1em; 
+		overflow:hidden;
+	}
+
+	figure img { border:1px solid #000; }
+}
+
+</style>
+
+</head>
+<body>
+  <div id=container class="container">
+  
+   	<header role="banner">
+  		<h1 style="text-align:center">Undergraduate Major Movers</h1><h2 style="text-align:center"><i>Degree Majors of MSU First Time Undergraduates Whose First Major as No Preference</i></h2><h3 style="text-align:center">Cohort : 2009</h3>
+		
+		<!--<div class="lead-in">
+		This visualization shows undergraduate students who changed their major in Fall semesters from 2010 to 2014.
+		</div> -->
+	<hr>
+	</header>	
+
+
+
+
+<!--script>
+function setActiveStyleSheet(delay) {
+var myElement = document.querySelector("#circle");
+myElement.style.opacity = 0.25;
+}
+</script>
+<div onClick="setActiveStyleSheet(80)">test</div
+-->
+
+
+	<div class="wrap">
+		<main role="main">
+		<nav role=navigation>
+		<div id="timeline"></div>
+		</nav>		
+		<div id="chart"></div>
+		</main>
+	</div>
+  <div id="diagram"></div>
+
+
+  <script>
+
+    (function() {
+      var datafile = 'json/data.json';
+      var aLittleBit = Math.PI / 100000;
+
+ d3.json(datafile, function(data) {
+      var now = "2009";
+      var labelCustom = "";
+
+      var chart = Globalmigration.chart(data, {
+        element: '#diagram',
+        now: now,
+        animationDuration: 700,
+        margin: 100,
+        arcPadding: 0.01,
+	maxRegionsOpen: 10,
+        layout: {
+          threshold: 1,
+          labelThreshold: 10,
+		  colors: 'a6cee3 b2df8a 1f78b4 33a02c fb9a99 e31a1c fdbf6f ff7f00 cab2d6 6a3d9a b15928 e7298a 80cdc1 fee090  '.split(' ').map(function(c) { return '#' + c; })
+        }
+      });
+
+     Globalmigration.timeline(chart, {
+        now: now,
+        element: '#timeline',
+	labelCustom: labelCustom
+      }); 
+
+      chart.draw(now);
+     });
+    })();
+      
+
+
+	</script>
+	<footer role="contentinfo">
+
+ 		<div class="license">
+		This visualization tool was developed by  <a href="https://opb.msu.edu/">OPB</a> <br>
+		<small>click the arcs to drill down to major level</small>
+		</div>
+		
+	</footer>
+
+</body>
+</html>
