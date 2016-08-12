@@ -7534,6 +7534,75 @@ d3 = function() {
       // TODO Allow padding to be specified as percentage?
       k = (2 * π - padding * n) / k;
 
+        
+         x = 0, i = 1; 
+        
+        while (++i < n) {
+        
+        var outflow1 = 0;
+            var di = 0;
+            //var di=1;
+        x0 = x, j = -1; while (++j < n) {
+          var dj = subgroupIndex[di].source[j],
+             v =  v = matrix[indices[di]][indices[dj]]
+            outflow1 += v;        
+        } 
+       // console.log(outflow1);
+        };
+        
+        //outflow2
+          x = 0, i = -1; 
+        while (++i < n) {
+        var outflow2 = 0;
+            var di = 1;
+            //var di=1;
+        x0 = x, j = -1; while (++j < n) {
+          var dj = subgroupIndex[di].source[j],
+             v =   matrix[indices[di]][indices[dj]]
+            outflow2 += v;        
+        } 
+            //console.log(outflow2);
+        };
+        
+        
+        var floww =0 ;
+        for (w=0; w <n;w++) {
+            
+             x = 0, i = -1; 
+                while (++i < n) {
+                        var outfloww = 0;
+                        var di =w;
+                        x0 = x, j = -1; while (++j < n) {
+                            var dj = subgroupIndex[di].source[j],
+                            v =   matrix[indices[di]][indices[dj]]
+                        outfloww += v;        
+                        } 
+                   // console.log(outflow6);
+        };
+            floww += outfloww;
+        };
+        
+         var flowi =0 ;
+        for (w=0; w <n;w++) {
+            
+             x = 0, i = -1; 
+                while (++i < n) {
+                        var infloww = 0;
+                        var di =w;
+                        x0 = x, j = -1; while (++j < n) {
+                             var dj = subgroupIndex[di].target[j],
+                                 v = matrix[indices[dj]][indices[di]]
+                            
+                        infloww += v;        
+                        } 
+                   // console.log(outflow6);
+        };
+            flowi += infloww;
+        };
+        console.log(floww);
+        console.log(flowi);
+        
+        
       // Compute the start and end angle for each group and subgroup.
       // Note: Opera has a bug reordering object literal properties!
       x = 0, i = -1; while (++i < n) {
@@ -7586,6 +7655,9 @@ d3 = function() {
           angle: lastX0 + (x - lastX0) / 2,
           inflow: inflow,
           outflow: outflow,
+            sflow: floww,
+            inflowPct: inflow/flowi,
+            outflowPct: outflow/floww,
           value: Math.round((x - lastX0) / k)
         };
         x += padding;
@@ -8211,6 +8283,7 @@ d3 = function() {
       var bbox = el.getBBox();
       infoTimer = setTimeout(function() {
         var color = d3.select(el).style('fill');
+            var formatPercent = d3.format(".1%");
 
         info
           .attr('transform', 'translate(' + (bbox.x + bbox.width / 2) + ',' + (bbox.y + bbox.height / 2) + ')');
@@ -8218,8 +8291,9 @@ d3 = function() {
         var text = info.select('.text').selectAll('text')
           .data([
             data.names[d.id],
-            'Total In: ' + formatNumber(d.inflow),
-            'Total Out: ' + formatNumber(d.outflow)
+            'Total In: ' + formatNumber(d.inflow)+ ' ('+ formatPercent(d.inflowPct)+')',
+            'Total Out: ' + formatNumber(d.outflow)+ ' ('+ formatPercent(d.outflowPct)+')',
+              'Net In: ' + formatNumber(d.inflow-d.outflow)
           ]);
         text.enter().append('text');
         text
